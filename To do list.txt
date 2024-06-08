@@ -1,0 +1,30 @@
+class TodoList:
+    def __init__(self):
+        self.tasks = []
+
+    def add_task(self, task):
+        self.tasks.append(task)
+
+    def view_tasks(self):
+        for i, task in enumerate(self.tasks, start=1):
+            print(f"{i}. {task}")
+
+    def delete_task(self, task_number):
+        if 0 < task_number <= len(self.tasks):
+            self.tasks.pop(task_number - 1)
+
+todo = TodoList()
+while True:
+    cmd = input("Enter command (add/view/delete/exit): ").strip().lower()
+    if cmd == "add":
+        task = input("Enter task: ").strip()
+        todo.add_task(task)
+    elif cmd == "view":
+        todo.view_tasks()
+    elif cmd == "delete":
+        num = int(input("Enter task number to delete: ").strip())
+        todo.delete_task(num)
+    elif cmd == "exit":
+        break
+    else:
+        print("Invalid command.")
